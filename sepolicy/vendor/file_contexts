@@ -1,0 +1,8 @@
+# 
+
+# Devices
+/mnt/vendor/efs/tee(/.*)?	                         u:object_r:tee_efs_file:s0
+
+
+# Data
+/data/vendor/tee(/.*)?                           u:object_r:tee_vendor_data_file:s0
