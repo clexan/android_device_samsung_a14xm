@@ -250,16 +250,15 @@ PRODUCT_PACKAGES += \
     init.connectivity.rc \
     init.fingerprint.rc \
     init.modem.rc \
-    init.mt6897.rc \
-    init.mt6897.power.rc \
-    init.mt6897.usb.rc \
+    init.mt6833.rc \
+    init.mt6833.usb.rc \
     init.project.rc \
     init.sensor_2_0.rc \
     init.target.rc \
     ueventd.mt6833.rc
 
 # PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/rootdir/etc/init.recovery.mt6897.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6897.rc
+    $(DEVICE_PATH)/rootdir/etc/init.recovery.mt6833.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6833.rc
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -283,14 +282,6 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/mediatek/libmtkperf_client \
     hardware/mediatek \
     hardware/samsung
-
-# Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal-service.pixel \
-    thermal_symlinks
-
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/thermal_info_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config.json
 
 # USB
 $(call soong_config_set,android_hardware_mediatek_usb,audio_accessory_supported,true)

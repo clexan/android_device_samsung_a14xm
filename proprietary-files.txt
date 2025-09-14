@@ -3,41 +3,6 @@
 vendor/lib/libaedv.so
 vendor/lib64/libaedv.so
 
-# Audio HAL 
-vendor/bin/hw/android.hardware.audio.service-aidl.mediatek
-vendor/etc/init/android.hardware.audio.service-aidl.mediatek.rc
-vendor/etc/vintf/manifest/android.hardware.audio.effect.service-aidl.xml
-vendor/etc/vintf/manifest/android.hardware.audio.service-aidl.xml
-vendor/etc/aidl/le_audio/aidl_audio_set_configurations.bfbs
-vendor/etc/aidl/le_audio/aidl_audio_set_configurations.json
-vendor/etc/aidl/le_audio/aidl_audio_set_scenarios.bfbs
-vendor/etc/aidl/le_audio/aidl_audio_set_scenarios.json
-vendor/etc/le_audio_codec_capabilities.xml
-vendor/lib64/hw/android.hardware.audio.effect.aidl-impl-mediatek.so
-vendor/lib64/hw/vendor.mediatek.hardware.audio-impl.so
-vendor/lib64/hw/android.hardware.soundtrigger3-impl.so
-vendor/lib64/android.media.audio.common.types-V3-ndk.so
-vendor/lib64/android.hardware.audio.core-impl-mediatek.so
-vendor/lib64/libaudiopolicyconfigxml_mtk_vendor.so
-vendor/lib64/vendor.mediatek.hardware.audio@6.1.so
-vendor/lib64/vendor.mediatek.hardware.audio-V1-ndk.so
-
-# Audio HAL
-vendor/bin/hw/secaudiohalaidl
-vendor/etc/init/secaudiohalaidl.rc
-vendor/etc/vintf/manifest/secaudiohalaidl_manifest.xml
-vendor/etc/vintf/manifest/seh_bluetooth_audio.xml
-vendor/lib64/hw/libsecaudiohal_aidl.so
-vendor/lib64/libsecaudiocoreutils.so
-vendor/lib64/libsecaudioinfo.so
-vendor/lib64/vendor.samsung.hardware.audio-V1-ndk.so
-
-# Audio HAL Param 
-system_ext/bin/AudioSetParam
-system_ext/bin/hw/android.hardware.audio.parameter_parser.service
-system_ext/etc/init/android.hardware.audio.parameter_parser.service.rc
-system_ext/lib64/av-audio-types-aidl-V1-ndk.so
-
 # Audio 
 vendor/lib64/hw/audio.primary.mt6833.so
 vendor/lib64/hw/audio.r_submix.mt6833.so
@@ -67,6 +32,7 @@ vendor/lib64/libnxp_extamp_intf.so
 vendor/lib64/librt_extamp_intf.so
 vendor/lib64/libspeech_enh_lib.so;FIX_SONAME
 vendor/lib64/libspeechparser_vendor.so
+vendor/lib64/vendor.mediatek.hardware.audio@6.1.so
 system_ext/lib64/vendor.mediatek.hardware.audio@7.1.so
 system_ext/lib64/vendor.mediatek.hardware.audio@8.1.so
 
@@ -643,7 +609,6 @@ vendor/etc/command.csv
 vendor/lib64/hw/vendor.mediatek.hardware.mtkpower-aidl-impl.so
 vendor/lib64/android.hardware.power-service-mediatek.so
 vendor/lib64/libpower_timer.so
-vendor/lib64/android.hardware.power-V5-ndk.so
 vendor/lib64/vendor.mediatek.hardware.power@2.0.so
 vendor/lib64/vendor.mediatek.hardware.mtkpower@1.1.so
 vendor/lib64/vendor.mediatek.hardware.mtkpower-V1-ndk.so

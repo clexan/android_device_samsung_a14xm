@@ -36,14 +36,17 @@ lib_fixups: lib_fixups_user_type = {
 
 blob_fixups: blob_fixups_user_type = {
 
-    'vendor/lib64/libmtkcam_hal_aidl_common.so': blob_fixup()
-        .replace_needed('android.hardware.camera.common-V2-ndk.so', 'android.hardware.camera.common-V1-ndk.so'),
-
-    ('vendor/lib64/libmtkcam_grallocutils_aidlv1helper.so'): blob_fixup()
-        .replace_needed('android.hardware.graphics.allocator-V1-ndk.so', 'android.hardware.graphics.allocator-V2-ndk.so')
-        .replace_needed('android.hardware.graphics.common-V4-ndk.so', 'android.hardware.graphics.common-V6-ndk.so'),
-
-
+    ('vendor/bin/mnld', 'vendor/lib64/libaalservice.so'): blob_fixup()
+        .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so'),
+        
+    ('vendor/lib64/libmtkcam_hal_aidl_common.so', 'vendor/lib64/libmtkcam_hal_aidl2legacy_common.so', 'vendor/lib64/libcam.utils.sensorprovider.so'): blob_fixup()
+        .replace_needed('android.hardware.camera.common-V2-ndk.so', 'android.hardware.camera.common-V1-ndk.so')
+        .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so'),
+        
+    ('vendor/bin/hw/android.hardware.graphics.allocator-V2-service-mediatek', 'vendor/lib64/vendor.mediatek.hardware.camera.isphal-V1-ndk.so', 'vendor/lib64/libmtkcam_grallocutils.so', 'vendor/lib64/libaimemc.so', 'vendor/lib64/vendor.mediatek.hardware.pq_aidl-V4-ndk.so', 'vendor/lib64/vendor.mediatek.hardware.pq_aidl-V2-ndk.so', 'vendor/lib64/libgpud.so','vendor/lib64/libcodec2_fsr.so', 'vendor/lib64/hw/mapper.mediatek.so', 'vendor/lib64/hw/android.hardware.graphics.allocator-V2-mediatek.so', 'vendor/lib64/egl/libGLES_mali.so', 'vendor/lib64/vendor.mediatek.hardware.pq_aidl-V7-ndk.so'): blob_fixup()
+        .replace_needed('android.hardware.graphics.common-V4-ndk.so', 'android.hardware.graphics.common-V6-ndk.so')
+        .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V6-ndk.so'),
+        
     ('vendor/lib64/libneuralnetworks_sl_driver_mtk_legacy_prebuilt.so'): blob_fixup()
         .clear_symbol_version('AHardwareBuffer_allocate')
         .clear_symbol_version('AHardwareBuffer_createFromHandle')
@@ -56,24 +59,14 @@ blob_fixups: blob_fixups_user_type = {
 
     ('vendor/lib64/libnvram.so', 'vendor/lib64/libsysenv.so'): blob_fixup()
         .add_needed('libbase_shim.so'),
-    
 
-    'vendor/lib64/libmtkcam_hal_aidl2legacy_common.so': blob_fixup()
-        .replace_needed('android.hardware.camera.common-V2-ndk.so', 'android.hardware.camera.common-V1-ndk.so'),
-
-    ('vendor/bin/mnld', 'vendor/lib64/libaalservice.so', 'vendor/lib64/libcam.utils.sensorprovider.so'): blob_fixup()
-        .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so'),
-        
-    ('vendor/lib64/vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so', 'vendor/lib64/vendor.samsung.hardware.bluetooth.audio-V2-ndk.so', ): blob_fixup()
-        .replace_needed('android.hardware.audio.common-V3-ndk.so', 'android.hardware.audio.common-V4-ndk.so'),
-        
-    'vendor/etc/init/android.hardware.media.c2-mediatek.rc': blob_fixup()
-        .regex_replace(r'(/vendor/bin/hw/android\.hardware\.media\.c2-mediatek)\b',
-        r'\1-64b'),
-        
     'vendor/bin/hw/android.hardware.media.c2-mediatek-64b': blob_fixup()
         .add_needed('libstagefright_foundation-v33.so')
         .replace_needed('libavservices_minijail_vendor.so', 'libavservices_minijail.so'),
+    
+    'vendor/etc/init/android.hardware.media.c2-mediatek.rc': blob_fixup()
+        .regex_replace(r'(/vendor/bin/hw/android\.hardware\.media\.c2-mediatek)\b',
+        r'\1-64b'),
 
 }  # fmt: skip
 
