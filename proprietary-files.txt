@@ -488,14 +488,7 @@ vendor/bin/hw/android.hardware.media.c2-mediatek-64b
 vendor/etc/init/android.hardware.media.c2-mediatek.rc
 vendor/lib64/VP9SecureVdecCA.so
 vendor/lib64/libSecC2ComponentStore.so
-vendor/lib64/libcodec2.so
-vendor/lib64/libcodec2_aidl.so
 vendor/lib64/libcodec2_fsr.so
-vendor/lib64/libcodec2_hal_common.so
-vendor/lib64/libcodec2_hidl@1.0.so
-vendor/lib64/libcodec2_hidl@1.1.so
-vendor/lib64/libcodec2_hidl@1.2.so
-vendor/lib64/libcodec2_hidl_plugin.so
 vendor/lib64/libcodec2_mtk_c2store.so
 vendor/lib64/libcodec2_mtk_vdec.so
 vendor/lib64/libcodec2_mtk_venc.so
@@ -509,11 +502,8 @@ vendor/lib64/libcodec2_sec_mp3dec.so
 vendor/lib64/libcodec2_sec_mp4vdec.so
 vendor/lib64/libcodec2_sec_soft_common.so
 vendor/lib64/libcodec2_sec_vc1dec.so
-vendor/lib64/libcodec2_simple_component.so
 vendor/lib64/libcodec2_soft_ac4dec.so
-vendor/lib64/libcodec2_soft_common.so
 vendor/lib64/libcodec2_soft_eac3dec.so
-vendor/lib64/libcodec2_vndk.so
 vendor/lib64/libcodec2_vpp_fa_plugin.so
 vendor/lib64/libcodec2_vpp_mi_plugin.so
 vendor/lib64/libcodec2_vpp_qt_plugin.so
@@ -611,7 +601,6 @@ vendor/lib64/hw/vendor.mediatek.hardware.mtkpower-aidl-impl.so
 vendor/lib64/libpower_timer.so
 vendor/lib64/vendor.mediatek.hardware.mtkpower-V1-ndk.so
 vendor/lib64/vendor.mediatek.hardware.mtkpower-V2-ndk.so
-vendor/lib64/vendor.mediatek.hardware.mtkpower@1.1.so
 vendor/lib64/vendor.mediatek.hardware.mtkpower_applist-V2-ndk.so
 vendor/lib64/vendor.mediatek.hardware.power@2.0.so
 
@@ -705,7 +694,6 @@ vendor/bin/hw/tetheroffloadservice
 vendor/bin/netdagent
 vendor/etc/init/netdagent.rc
 vendor/etc/vintf/manifest/CommandService.xml
-vendor/lib64/android.hardware.tetheroffload-V1-ndk.so
 vendor/lib64/libforkexecwrap.so
 vendor/lib64/libifcutils_mtk.so
 vendor/lib64/vendor.mediatek.hardware.netdagent-V1-ndk.so

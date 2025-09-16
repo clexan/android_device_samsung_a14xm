@@ -17,13 +17,12 @@
         device/mediatek/common/project_manifest/manifest_dmc.xml
         device/mediatek/common/project_manifest/manifest_apmonitor.xml
         device/mediatek/vendor/common/project_manifest/manifest_composer.xml 
-        vendor/samsung/hardware/vendor/ril/URC/chipvendor/mediatek/vendor.samsung.remove.mediatek.telephony.xml
+        vendor/samsung/hardware/vendor/ril/URC/chipvendor/mediatek vendor.samsung.remove.mediatek.telephony.xml
         vendor/samsung/system/security/skeymaster/common/configs/skeymint_v100_manifest.xml
         vendor/samsung/system/security/skeymaster/common/configs/gatekeeper_manifest.xml
         device/wingtechsh/S96901AA1/manifest_target_level.xml
         device/mediatek/vendor/common/manifest.xml
-        vendor/samsung/interfaces/gnss/aidl/aidl_manifest/manifest_gnss_aidl_IGnssV4_ISehGnssV4.xml
--->
+        vendor/samsung/interfaces/gnss/aidl/aidl_manifest/manifest_gnss_aidl_IGnssV4_ISehGnssV4.xml-->
 <manifest version="8.0" type="device" target-level="5">
     <hal format="aidl">
         <name>android.hardware.camera.provider</name>

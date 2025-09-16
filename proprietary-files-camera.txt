@@ -121,7 +121,6 @@ vendor/lib64/libcamera.customae.so
 vendor/lib64/libcamera.customaf.so
 vendor/lib64/libcamera.customawb.so
 vendor/lib64/libcamera.customflk.so
-vendor/lib64/libcamera_metadata.so
 vendor/lib64/libcameracustom.camera.3a.so
 vendor/lib64/libcameracustom.camera.isp.so
 vendor/lib64/libcameracustom.camera.sensors.so
@@ -147,7 +146,6 @@ vendor/lib64/libfeature_rss.so
 vendor/lib64/libfeatureiodrv_mem.so
 vendor/lib64/libheichal.so
 vendor/lib64/libheifcapture.so
-vendor/lib64/libimage_io.so
 vendor/lib64/libimagebuffer_wrapper.so
 vendor/lib64/libimagecodec_native.quram.so
 vendor/lib64/libimageio.so
