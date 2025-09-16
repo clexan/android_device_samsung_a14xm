@@ -93,3 +93,10 @@ prebuilt_etc {
     vendor: true,
 }
 
+prebuilt_etc {
+    name: "ueventd.mt6833.rc",
+    src: "ueventd.mt6833.rc",
+    filename: "ueventd.rc",
+    vendor: true,
+}
+

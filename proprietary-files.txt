@@ -671,8 +671,6 @@ vendor/lib64/libsysenv.so
 vendor/lib64/libtrm.so
 vendor/lib64/libvkmanager_vendor.so
 vendor/lib64/libwpfa.so
-vendor/lib64/vendor.samsung.hardware.radio-V1-ndk.so
-vendor/lib64/vendor.samsung.hardware.radio.bridge-V1-ndk.so
 vendor/lib64/vendor.samsung.hardware.radio.bridge@2.0.so
 vendor/lib64/vendor.samsung.hardware.radio.bridge@2.1.so
 vendor/lib64/vendor.samsung.hardware.radio.channel@2.0.so
