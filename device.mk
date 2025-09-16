@@ -74,7 +74,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth-service.mediatek \
+    android.hardware.bluetooth-service-mediatek \
     android.hardware.bluetooth.audio-impl
     
 # ContextHub
@@ -115,7 +115,7 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.lights-service.samsung
+    android.hardware.light-service.samsung
 
 # Lineage Health
 $(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/input_suspend)
@@ -209,7 +209,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.power-service.lineage-libperfmgr \
     libmtkperf_client_vendor \
-    libperfctl_vendor \
     libpowerhalwrap_vendor
 
 PRODUCT_COPY_FILES += \
@@ -245,7 +244,6 @@ PRODUCT_PACKAGES += \
     init.connectivity.common.rc \
     init_connectivity.rc \
     init.connectivity.rc \
-    init.fingerprint.rc \
     init.modem.rc \
     init.mt6833.rc \
     init.mt6833.usb.rc \
@@ -254,7 +252,6 @@ PRODUCT_PACKAGES += \
     init.pstore_blk.sh \
     init.sec.rc \
     init.sensor_2_0.rc \
-    init.target.rc \
     ueventd.mt6833.rc
 
 PRODUCT_COPY_FILES += \

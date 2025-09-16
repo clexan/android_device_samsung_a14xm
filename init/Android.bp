@@ -14,6 +14,7 @@ prebuilt_etc {
     name: "fstab.mt6833",
     src: "fstab.mt6833",
     vendor: true,
+    ramdisk_available: true,
 }
 
 prebuilt_etc {
