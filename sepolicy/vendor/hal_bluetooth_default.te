@@ -1,3 +1,0 @@
-allow hal_bluetooth_default sec_efs_file:dir r_dir_perms;
-
-set_prop(hal_bluetooth_default, vendor_bluetooth_prop)
