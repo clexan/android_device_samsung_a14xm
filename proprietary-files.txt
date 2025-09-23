@@ -149,7 +149,7 @@ vendor/etc/audio_param/VoIPv2GainBoost_AudioParam.xml
 vendor/etc/audio_param/VoIPv2GainBoost_ParamUnitDesc.xml
 vendor/etc/audio_param/VoIPv2General_AudioParam.xml
 vendor/etc/audio_param/VoIPv2General_ParamUnitDesc.xml
-vendor/etc/audio_param/VoIPv2UI_AudioParam.xml
+vendor/etc/audio_param/VoIPv2UI_AudioParam.xml 
 vendor/etc/audio_param/VoIPv2UI_ParamUnitDesc.xml
 vendor/etc/audio_param/VoIPv2_AudioParam.xml
 vendor/etc/audio_param/VoIPv2_ParamTreeView.xml
@@ -374,7 +374,6 @@ vendor/lib64/hw/hwcomposer.mt6833.so
 vendor/lib64/hw/mapper.mediatek.so
 vendor/lib64/hw/vendor.mediatek.hardware.pq_aidl-impl.so
 vendor/lib64/hw/vulkan.mali.so
-
 system_ext/lib64/vendor.mediatek.hardware.pq@2.0.so
 system_ext/lib64/vendor.mediatek.hardware.pq@2.1.so
 system_ext/lib64/vendor.mediatek.hardware.pq@2.2.so
@@ -665,13 +664,13 @@ vendor/lib64/vendor.samsung.hardware.radio.bridge@2.1.so
 vendor/lib64/vendor.samsung.hardware.radio.channel@2.0.so
 
 # Sensors
-vendor/firmware/grippower.info
 vendor/lib64/hw/android.hardware.sensors@2.X-subhal-mediatek.so
 vendor/lib64/hw/sensors.mediatek.V2.0.so
 vendor/lib64/hw/sensors.mt6833.so
 vendor/lib64/libhfmanager.so
 vendor/lib64/libsensor_custom.so
 vendor/lib64/sensors.grip.so
+vendor/firmware/grippower.info
 
 # SoundFX
 vendor/lib64/soundfx/libaecsw_mtk.so
@@ -713,44 +712,11 @@ vendor/etc/init/init.thermalloadalgod.rc
 vendor/etc/init/thermal-mediatek.rc
 
 # Touchscreen (Firmware)
+vendor/firmware/focaltech_ft8722_fw_txd.bin
 vendor/firmware/Himax_83112f_fw_djn.bin
 vendor/firmware/Himax_83112f_fw_dsbj.bin
 vendor/firmware/Himax_83112f_mp_djn.bin
 vendor/firmware/Himax_83112f_mp_dsbj.bin
-vendor/firmware/focaltech_ft8722_fw_truly.bin
-vendor/firmware/focaltech_ft8722_fw_txd.bin
-vendor/firmware/gt9886_firmware_6781v01.bin
-vendor/firmware/gt9886_firmware_6785a4.bin
-vendor/firmware/gt9886_firmware_6785ae.bin
-vendor/firmware/gt9886_firmware_6853v01.bin
-vendor/firmware/gt9886_firmware_6873v01.bin
-vendor/firmware/gt9886_firmware_6877af.bin
-vendor/firmware/gt9886_firmware_6877v01.bin
-vendor/firmware/gt9886_firmware_6885a1.bin
-vendor/firmware/gt9886_firmware_6885af.bin
-vendor/firmware/gt9886_firmware_6885b0.bin
-vendor/firmware/gt9886_firmware_6885b1.bin
-vendor/firmware/gt9886_firmware_6885v01.bin
-vendor/firmware/gt9886_firmware_6893v01.bin
-vendor/firmware/gt9896s_firmware_1080x2280.bin
-vendor/firmware/gt9896s_firmware_1080x2400.bin
-vendor/firmware/gt9896s_firmware_6781v01_1080x2280.bin
-vendor/firmware/gt9896s_firmware_6781v01_1080x2300.bin
-vendor/firmware/gt9896s_firmware_6833v01.bin
-vendor/firmware/gt9896s_firmware_6853v01.bin
-vendor/firmware/gt9896s_firmware_6855v01.bin
-vendor/firmware/gt9896s_firmware_6873v00.bin
-vendor/firmware/gt9896s_firmware_6877v01.bin
-vendor/firmware/gt9896s_firmware_6877v02.bin
-vendor/firmware/gt9896s_firmware_6878v01.bin
-vendor/firmware/gt9896s_firmware_6879v01.bin
-vendor/firmware/gt9896s_firmware_6893v01.bin
-vendor/firmware/gt9896s_firmware_6893v02.bin
-vendor/firmware/gt9896s_firmware_6893v03.bin
-vendor/firmware/gt9896s_firmware_6893v04.bin
-vendor/firmware/gt9896s_firmware_6893v05.bin
-vendor/firmware/gt9896s_firmware_6895v01.bin
-vendor/firmware/gt9896s_firmware_6983v01.bin
 
 # Touchscreen (Modules)
 vendor/etc/init/init.touch.rc
@@ -758,43 +724,9 @@ vendor/etc/init/init.touch.rc
 # Touchscreen (Firmware Configuration)
 vendor/firmware/djn_hx_criteria.csv
 vendor/firmware/dsbj_hx_criteria.csv
-vendor/firmware/focaltech_ft8722_truly.ini
 vendor/firmware/focaltech_ft8722_txd.ini
-vendor/firmware/gt9886_cfg_6781v01.bin
-vendor/firmware/gt9886_cfg_6785v96.bin
-vendor/firmware/gt9886_cfg_6785v99.bin
-vendor/firmware/gt9886_cfg_6853v01.bin
-vendor/firmware/gt9886_cfg_6873v01.bin
-vendor/firmware/gt9886_cfg_6877v01.bin
-vendor/firmware/gt9886_cfg_6885v01.bin
-vendor/firmware/gt9886_cfg_6885v1.bin
-vendor/firmware/gt9886_cfg_6885v9c.bin
-vendor/firmware/gt9886_cfg_6893v01.bin
-vendor/firmware/gt9886_cfg_90hz6785.bin
-vendor/firmware/gt9886_cfg_90hz6877.bin
-vendor/firmware/gt9886_cfg_90hz6885.bin
-vendor/firmware/gt9886_cfg_gt9885v1.bin
-vendor/firmware/gt9896s_cfg_1080x2280.bin
-vendor/firmware/gt9896s_cfg_1080x2400.bin
-vendor/firmware/gt9896s_cfg_6781v01_1080x2280.bin
-vendor/firmware/gt9896s_cfg_6781v01_1080x2300.bin
-vendor/firmware/gt9896s_cfg_6833v01.bin
-vendor/firmware/gt9896s_cfg_6853v01.bin
-vendor/firmware/gt9896s_cfg_6855v01.bin
-vendor/firmware/gt9896s_cfg_6873v01.bin
-vendor/firmware/gt9896s_cfg_6877v01.bin
-vendor/firmware/gt9896s_cfg_6877v02.bin
-vendor/firmware/gt9896s_cfg_6878v01.bin
-vendor/firmware/gt9896s_cfg_6879v01.bin
-vendor/firmware/gt9896s_cfg_6893v01.bin
-vendor/firmware/gt9896s_cfg_6893v02.bin
-vendor/firmware/gt9896s_cfg_6893v03.bin
-vendor/firmware/gt9896s_cfg_6893v04.bin
-vendor/firmware/gt9896s_cfg_6893v05.bin
-vendor/firmware/gt9896s_cfg_6895v01.bin
-vendor/firmware/gt9896s_cfg_6983v01.bin
-vendor/firmware/mp_ili7807s_cw.ini
 vendor/firmware/mp_ili7807s_tianma.ini
+vendor/firmware/mp_ili7807s_cw.ini
 
 # TEEGRIS
 vendor/bin/tzdaemon
@@ -824,12 +756,10 @@ vendor/tee/00000000-4d54-4b5f-4246-44524d4b5052
 vendor/tee/00000000-4d54-4b5f-4246-534d454d5441
 vendor/tee/00000000-4d54-4b5f-4246-57564e544100
 vendor/tee/00000000-4d54-4b5f-4246-72706d627461
-vendor/tee/00000000-5769-4e67-544b-416c69504941
 vendor/tee/00000000-5769-4e67-544b-464e43686970
 vendor/tee/00000000-5769-4e67-544b-464e47667063
 vendor/tee/00000000-5769-4e67-544b-464e53696c65
 vendor/tee/00000000-5769-4e67-544b-466365556c6b
-vendor/tee/00000000-5769-4e67-544b-576374505374
 vendor/tee/driver/00000000-0000-0000-0000-494363447256
 vendor/tee/driver/00000000-0000-0000-0000-4d53546d7374
 vendor/tee/driver/00000000-0000-0000-0000-564c544b4456

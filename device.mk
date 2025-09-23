@@ -13,18 +13,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
-# A/B
-ifneq ($(WITH_GMS),true)
-    $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
-    TARGET_RO_FILE_SYSTEM_TYPE := ext4
-else
-    $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.mk)
-    PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
-    TARGET_RO_FILE_SYSTEM_TYPE := erofs
-    PRODUCT_VIRTUAL_AB_COW_VERSION := 3
-    PRODUCT_VENDOR_PROPERTIES += ro.virtual_ab.compression.threads=true
-endif
-
 PRODUCT_PACKAGES += \
     create_pl_dev \
     create_pl_dev.recovery
@@ -74,7 +62,6 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth-service-mediatek \
     android.hardware.bluetooth.audio-impl
     
 # ContextHub
@@ -280,6 +267,10 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/mediatek \
     hardware/samsung
 
+# Touch features
+PRODUCT_PACKAGES += \
+    vendor.lineage.touch-service.samsung
+
 # USB
 $(call soong_config_set,android_hardware_mediatek_usb,audio_accessory_supported,true)
 
@@ -292,13 +283,8 @@ PRODUCT_PACKAGES += \
     vndservicemanager
 
 # Vibrator
-$(call soong_config_set, vibrator, vibratortargets, vibratoraidlV2target)
-
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service
-
-PRODUCT_COPY_FILES += \
-    vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
+    android.hardware.vibrator-service.samsung
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
