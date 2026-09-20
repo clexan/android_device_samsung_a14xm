@@ -14,17 +14,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
-# A/B
-ifneq ($(WITH_GMS),true)
-    $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
-    TARGET_RO_FILE_SYSTEM_TYPE := ext4
-else
-    $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.mk)
-    PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
-    TARGET_RO_FILE_SYSTEM_TYPE := erofs
-    PRODUCT_VIRTUAL_AB_COW_VERSION := 3
-    PRODUCT_VENDOR_PROPERTIES += ro.virtual_ab.compression.threads=true
-endif
+# This is a non-A/B device with dynamic partitions and a dedicated recovery.
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 PRODUCT_PACKAGES += \
     create_pl_dev \
@@ -42,7 +33,7 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Audio
-$(call soong_config_set,android_hardware_audio,run_64bit,true)
+$(call soong_config_set_bool,android_hardware_audio,run_64bit,true)
 TARGET_EXCLUDES_AUDIOFX := true
 
 PRODUCT_PACKAGES += \
@@ -84,7 +75,7 @@ PRODUCT_PACKAGES += \
     
 # Display
 PRODUCT_PACKAGES += \
-    android.hardware.memtrack-service.mediatek-mali
+    android.hardware.memtrack-service.mediatek
     
 # DRM
 PRODUCT_PACKAGES += \
@@ -107,10 +98,6 @@ PRODUCT_ENABLE_UFFD_GC := true
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.0-service.samsung
 
-# Linker
-PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
-    $(DEVICE_PATH)/configs/linker.config.json
-
 # Media
 PRODUCT_PACKAGES += \
     android.hardware.media.omx@1.0-service
@@ -120,13 +107,13 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.lights-service.samsung
+    android.hardware.light-service.samsung
 
 # Lineage Health
-$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/input_suspend)
+$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/batt_slate_mode)
 $(call soong_config_set,lineage_health,charging_control_charging_enabled,0)
 $(call soong_config_set,lineage_health,charging_control_charging_disabled,1)
-$(call soong_config_set,lineage_health,charging_control_supports_bypass,false)
+$(call soong_config_set_bool,lineage_health,charging_control_supports_bypass,true)
 
 PRODUCT_PACKAGES += \
     vendor.lineage.health-service.default
@@ -150,27 +137,6 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 PRODUCT_ENFORCE_RRO_TARGETS := *
-
-PRODUCT_PACKAGES += \
-   CarrierConfigOverlayDuchamp \
-   FrameworksResOverlayDuchamp \
-   PowerOffAlarmOverlayDuchamp \
-   SettingsProviderOverlayDuchampPOCO \
-   SettingsProviderOverlayDuchampRedmi \
-   SettingsResOverlayDuchamp \
-   SystemUIOverlayDuchamp \
-   TelephonyResOverlayDuchamp \
-   TetheringResOverlayDuchamp \
-   WifiOverlay
-
-PRODUCT_PACKAGES += \
-   LineageApertureOverlayDuchamp \
-   LineageDialerDuchamp \
-   LineageSDKOverlayDuchamp \
-   LineageSettingsOverlayDuchamp
-
-# Partitions
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -220,9 +186,6 @@ PRODUCT_PACKAGES += \
     libperfctl_vendor \
     libpowerhalwrap_vendor
 
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
-
 # PowerOffAlarm
 PRODUCT_PACKAGES += \
     PowerOffAlarm
@@ -233,33 +196,42 @@ include $(DEVICE_PATH)/vendor_logtag.mk
 #
 
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/permissions/mediatek-common.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/mediatek-common.xml \
-    $(DEVICE_PATH)/configs/permissions/mediatek-framework.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/mediatek-framework.xml \
-    $(DEVICE_PATH)/configs/permissions/mediatek-ims-base.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/mediatek-ims-base.xml \
-    $(DEVICE_PATH)/configs/permissions/mediatek-ims-common.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/mediatek-ims-common.xml \
-    $(DEVICE_PATH)/configs/permissions/mediatek-telecom-common.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/mediatek-telecom-common.xml \
-    $(DEVICE_PATH)/configs/permissions/mediatek-telephony-base.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/mediatek-telephony-base.xml \
-    $(DEVICE_PATH)/configs/permissions/mediatek-telephony-common.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/mediatek-telephony-common.xml
-
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/permissions/privapp-permissions-com.mediatek.engineermode.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-com.mediatek.engineermode.xml \
-    $(DEVICE_PATH)/configs/permissions/privapp-permissions-com.mediatek.ims.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-com.mediatek.ims.xml
+    $(DEVICE_PATH)/configs/permissions/product-permissions-mediatek.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/product-permissions-mediatek.xml \
+    $(DEVICE_PATH)/configs/permissions/system-ext-permissions-mediatek.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/system-ext-permissions-mediatek.xml
 
 # Rootdir
 PRODUCT_PACKAGES += \
+    fstab.mt6833 \
+    init.cgroup.rc \
+    init.connectivity.common.rc \
     init.connectivity.rc \
-    init.fingerprint.rc \
     init.modem.rc \
-    init.mt6897.rc \
-    init.mt6897.power.rc \
-    init.mt6897.usb.rc \
+    init.mt6833.rc \
+    init.mt6833.usb.rc \
+    init.mtkgki.rc \
+    init.pstore_blk.sh \
     init.project.rc \
+    init.sec.rc \
     init.sensor_2_0.rc \
-    init.target.rc \
-    ueventd.mt6833.rc
+    init_connectivity.rc \
+    init.insmod.mt6833.cfg \
+    init.insmod.sh
 
-# PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/rootdir/etc/init.recovery.mt6897.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6897.rc
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/init/init.recovery.mt6833.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6833.rc
+
+# Stock-kernel modules required by the standalone non-A/B recovery. Preserve
+# Samsung's modules.load.recovery ordering and dependency metadata.
+RECOVERY_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/prebuilts/recovery-modules/*.ko)
+RECOVERY_KERNEL_MODULE_METADATA := \
+    $(DEVICE_PATH)/prebuilts/recovery-modules/modules.alias \
+    $(DEVICE_PATH)/prebuilts/recovery-modules/modules.dep \
+    $(DEVICE_PATH)/prebuilts/recovery-modules/modules.load.recovery \
+    $(DEVICE_PATH)/prebuilts/recovery-modules/modules.softdep
+
+PRODUCT_COPY_FILES += \
+    $(foreach module,$(RECOVERY_KERNEL_MODULES),$(module):$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/$(notdir $(module))) \
+    $(foreach metadata,$(RECOVERY_KERNEL_MODULE_METADATA),$(metadata):$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/$(notdir $(metadata)))
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -267,9 +239,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
    sensors.dynamic_sensor_hal
-
-PRODUCT_COPY_FILES += \
-   $(DEVICE_PATH)/configs/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 33
@@ -284,16 +253,8 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/mediatek \
     hardware/samsung
 
-# Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal-service.pixel \
-    thermal_symlinks
-
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/thermal_info_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config.json
-
 # USB
-$(call soong_config_set,android_hardware_mediatek_usb,audio_accessory_supported,true)
+$(call soong_config_set_bool,android_hardware_mediatek_usb,audio_accessory_supported,true)
 
 PRODUCT_PACKAGES += \
     android.hardware.usb-service.mediatek \
@@ -304,13 +265,8 @@ PRODUCT_PACKAGES += \
     vndservicemanager
 
 # Vibrator
-$(call soong_config_set, vibrator, vibratortargets, vibratoraidlV2target)
-
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service
-
-PRODUCT_COPY_FILES += \
-    vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
+    android.hardware.vibrator-service.mediatek
 
 # Virtualization service
 $(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
