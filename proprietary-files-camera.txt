@@ -10,6 +10,7 @@ vendor/lib64/hw/vendor.mediatek.hardware.camera.ccap@1.0-impl.so
 vendor/lib64/hw/vendor.mediatek.hardware.camera.isphal_aidl@1.0-impl.so
 vendor/lib64/hw/vendor.mediatek.hardware.camera.postproc_aidl@1.0-impl.so
 vendor/lib64/libOpenCL.so
+vendor/lib64/libaaa_flickerutil.so
 vendor/lib64/libaaa_ltm.so
 vendor/lib64/libaaa_ltmx.so
 vendor/lib64/libcamalgo.3dnr.so
@@ -83,7 +84,6 @@ vendor/lib64/libcam.chdr.so
 vendor/lib64/libcamdrv_isp.so
 vendor/lib64/libcamdrv_tuning_mgr.so
 vendor/lib64/libcamdrv_twin.so
-vendor/lib64/libcamera2ndk_vendor.so
 vendor/lib64/libcamera.customae.so
 vendor/lib64/libcamera.customaf.so
 vendor/lib64/libcamera.customawb.so
@@ -98,7 +98,6 @@ vendor/lib64/libcameracustom.lens.so
 vendor/lib64/libcamera.custom.pd_buf_mgr.so
 vendor/lib64/libcameracustom.plugin.so
 vendor/lib64/libcameracustom.so
-vendor/lib64/libcamera_metadata.so
 vendor/lib64/libremosaiclib.so
 vendor/lib64/librmsclib1.so
 vendor/lib64/libskhynix_q2b_5022Q_shared.so
@@ -150,10 +149,8 @@ vendor/lib64/libimagebuffer_wrapper.so
 vendor/lib64/libimagecodec_native.quram.so
 vendor/lib64/libimageio_plat_drv.so
 vendor/lib64/libimageio_plat_pipe.so
-vendor/lib64/libimage_io.so
 vendor/lib64/libimageio.so
 vendor/lib64/libimgsensorca.so
-vendor/lib64/libjpeg.so
 vendor/lib64/libstagefright_foundation_vendor.so
 vendor/lib64/libstereoinfoaccessor_vsdof.so
 vendor/lib64/mtkcam/libmtkcam_streaminfo_plugin-p1stt.so
@@ -234,7 +231,7 @@ vendor/lib64/libmtkcam_synchelper.so
 vendor/lib64/libmtkcam_sysutils.so
 vendor/lib64/libmtkcam_tuning_utils.so
 vendor/lib64/libmtkcam_ulog.so
-vendor/lib64/libmtkisp_metadata_v3.so
+vendor/lib64/libmtkisp_metadata_V3.so
 vendor/lib64/liblpcnr.so
 vendor/lib64/libmfllcore.so
 vendor/lib64/libmsnr.so

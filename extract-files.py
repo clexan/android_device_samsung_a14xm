@@ -32,6 +32,8 @@ def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
 lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
     'libuuid': lib_fixup_vendor_suffix,
+    'libmnl': lib_fixup_vendor_suffix,
+    'libformatter': lib_fixup_vendor_suffix,
 }
 
 blob_fixups: blob_fixups_user_type = {
@@ -41,7 +43,25 @@ blob_fixups: blob_fixups_user_type = {
 
     ('vendor/lib64/libmtkcam_grallocutils_aidlv1helper.so'): blob_fixup()
         .replace_needed('android.hardware.graphics.allocator-V1-ndk.so', 'android.hardware.graphics.allocator-V2-ndk.so')
-        .replace_needed('android.hardware.graphics.common-V4-ndk.so', 'android.hardware.graphics.common-V6-ndk.so'),
+        .replace_needed('android.hardware.graphics.common-V4-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
+
+    'vendor/lib64/vendor.mediatek.hardware.pq_aidl-V7-ndk.so': blob_fixup()
+        .replace_needed('android.hardware.graphics.common-V4-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
+
+    (
+        'vendor/bin/hw/android.hardware.graphics.allocator-V2-service-mediatek',
+        'vendor/lib64/egl/libGLES_mali.so',
+        'vendor/lib64/hw/android.hardware.graphics.allocator-V2-mediatek.so',
+        'vendor/lib64/hw/mapper.mediatek.so',
+        'vendor/lib64/libaimemc.so',
+        'vendor/lib64/libcodec2_fsr.so',
+        'vendor/lib64/libgpud.so',
+        'vendor/lib64/libmtkcam_grallocutils.so',
+        'vendor/lib64/vendor.mediatek.hardware.camera.isphal-V1-ndk.so',
+        'vendor/lib64/vendor.mediatek.hardware.pq_aidl-V2-ndk.so',
+        'vendor/lib64/vendor.mediatek.hardware.pq_aidl-V4-ndk.so',
+    ): blob_fixup()
+        .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
 
 
     ('vendor/lib64/libneuralnetworks_sl_driver_mtk_legacy_prebuilt.so'): blob_fixup()
@@ -64,8 +84,8 @@ blob_fixups: blob_fixups_user_type = {
     ('vendor/bin/mnld', 'vendor/lib64/libaalservice.so', 'vendor/lib64/libcam.utils.sensorprovider.so'): blob_fixup()
         .replace_needed('android.hardware.sensors-V2-ndk.so', 'android.hardware.sensors-V3-ndk.so'),
         
-    ('vendor/lib64/vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so', 'vendor/lib64/vendor.samsung.hardware.bluetooth.audio-V2-ndk.so', ): blob_fixup()
-        .replace_needed('android.hardware.audio.common-V3-ndk.so', 'android.hardware.audio.common-V4-ndk.so'),
+    'vendor/lib64/hw/android.hardware.soundtrigger3-impl.so': blob_fixup()
+        .replace_needed('android.hardware.soundtrigger3-V2-ndk.so', 'android.hardware.soundtrigger3-V4-ndk.so'),
         
     'vendor/etc/init/android.hardware.media.c2-mediatek.rc': blob_fixup()
         .regex_replace(r'(/vendor/bin/hw/android\.hardware\.media\.c2-mediatek)\b',
@@ -83,6 +103,7 @@ module = ExtractUtilsModule(
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,
+    add_firmware_proprietary_file=True,
 )
 
 module.add_proprietary_file('proprietary-files-camera.txt')
