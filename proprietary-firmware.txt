@@ -1,0 +1,15 @@
+# Unpinned firmware from a14xmeea-user 15 AP3A.240905.015.A2 A146PXXSJEZH6 release-keys
+#
+# Non-A/B firmware is installed by releasetools.py. Bootloader, preloader,
+# fuse, calibration, identity, and CSC partitions are deliberately excluded.
+
+dpm_1.img
+gz1.img
+mcupm_1.img
+md1img.img
+pi_img.img
+scp1.img
+spmfw.img
+sspm_1.img
+tee1.img
+tzar.img
