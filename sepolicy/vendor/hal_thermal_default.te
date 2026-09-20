@@ -1,0 +1,14 @@
+type thermal_hal_socket, file_type;
+
+allow hal_thermal_default thermal_hal_socket:sock_file create_file_perms;
+allow hal_thermal_default thermal_hal_socket:dir rw_dir_perms;
+
+allow hal_thermal_default sysfs_thermal:dir r_dir_perms;
+allow hal_thermal_default sysfs_thermal:file rw_file_perms;
+allow hal_thermal_default sysfs_thermal:lnk_file r_file_perms;
+
+allow hal_thermal_default sysfs_battery:dir r_dir_perms;
+allow hal_thermal_default sysfs_battery:file r_file_perms;
+allow hal_thermal_default sysfs_battery:lnk_file r_file_perms;
+
+allow hal_thermal_default self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;

@@ -6,3 +6,7 @@
 
 # Data
 /data/vendor/tee(/.*)?                           u:object_r:tee_vendor_data_file:s0
+
+# Thermal
+/(vendor|system/vendor)/bin/hw/android\.hardware\.thermal-service\.mediatek   u:object_r:hal_thermal_default_exec:s0
+/dev/socket/thermal_hal_socket                                               u:object_r:thermal_hal_socket:s0
